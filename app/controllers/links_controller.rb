@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   def index
-
+    @links = Link.where("created_at > ?", Time.now - (24 * 60 * 60)).order(read_count: :desc).limit(10)
   end
 
   def create
